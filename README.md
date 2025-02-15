@@ -12,9 +12,8 @@
 - Python 3
 - Poetry
 
-## Installation
 
-To install the `text2pdf` tool, follow these steps:
+## Installation
 
 1. Clone the repository:
     ```sh
@@ -23,11 +22,8 @@ To install the `text2pdf` tool, follow these steps:
     ```
 1. Install the dependencies using Poetry:
     ```sh
-    poetry install
+    make install
     ```
-
-
-Now you can use the `text2pdf` tool to convert text or Markdown files into PDF files.
 
 
 ## Usage
