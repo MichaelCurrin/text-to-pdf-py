@@ -75,7 +75,7 @@ def main():
 Examples:
   %(prog)s --output output.pdf input.txt
   %(prog)s --output output.pdf input.txt --markdown
-  echo "Hello World" | %(prog)s output.pdf
+  echo "Hello World" | %(prog)s -o output.pdf
         """,
     )
 
