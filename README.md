@@ -1,5 +1,5 @@
 # Text to PDF
-> Python CLI app for converting text into a PDF file, including Markdown rendering
+> Basic Python CLI tool to convert text or Markdown files into a PDF file
 
 [![GitHub tag](https://img.shields.io/github/tag/MichaelCurrin/text-to-pdf-py?include_prereleases=&sort=semver)](https://github.com/MichaelCurrin/text-to-pdf-py/releases/)
 [![License](https://img.shields.io/badge/License-MIT-blue)](#license)
