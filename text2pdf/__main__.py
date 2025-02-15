@@ -12,7 +12,9 @@ from weasyprint.text.fonts import FontConfiguration  # type: ignore
 
 
 def read_input(input_path: Optional[str] = None) -> str:
-    """Read content from file or stdin."""
+    """
+    Read content from file or stdin.
+    """
     if input_path:
         resolved_path = Path(input_path).resolve()
         assert resolved_path.exists(), f"Unable to read from path: {resolved_path}"
@@ -22,7 +24,9 @@ def read_input(input_path: Optional[str] = None) -> str:
 
 
 def md_to_html(content: str) -> str:
-    """Convert markdown content to HTML."""
+    """
+    Convert markdown content to HTML.
+    """
     md = MarkdownIt()
     html_content = md.render(content)
 
@@ -57,10 +61,21 @@ def md_to_html(content: str) -> str:
     """
 
 
+def convert_plain_text_to_html(content: str) -> str:
+    """
+    Convert plain text content to HTML with line breaks.
+    """
+    return content.replace("\n", "<br>")
+
+
 def generate_pdf(content: str, output_path: str, from_md: bool = False) -> None:
-    """Generate PDF from content."""
+    """
+    Generate PDF from content.
+    """
     if from_md:
         content = md_to_html(content)
+    else:
+        content = convert_plain_text_to_html(content)
 
     font_config = FontConfiguration()
 
