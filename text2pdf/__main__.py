@@ -1,3 +1,6 @@
+"""
+Text to PDF application.
+"""
 import argparse
 import sys
 from pathlib import Path
@@ -8,15 +11,17 @@ from weasyprint import HTML  # type: ignore
 from weasyprint.text.fonts import FontConfiguration  # type: ignore
 
 
-def read_input(file_path: Optional[str] = None) -> str:
+def read_input(input_path: Optional[str] = None) -> str:
     """Read content from file or stdin."""
-    if file_path:
-        return Path(file_path).read_text()
+    if input_path:
+        resolved_path = Path(input_path).resolve()
+        assert resolved_path.exists(), f"Unable to read from path: {resolved_path}"
+        return resolved_path.read_text()
 
     return sys.stdin.read()
 
 
-def convert_markdown_to_html(content: str) -> str:
+def md_to_html(content: str) -> str:
     """Convert markdown content to HTML."""
     md = MarkdownIt()
     html_content = md.render(content)
@@ -52,10 +57,10 @@ def convert_markdown_to_html(content: str) -> str:
     """
 
 
-def generate_pdf(content: str, output_path: str, is_markdown: bool = False) -> None:
+def generate_pdf(content: str, output_path: str, from_md: bool = False) -> None:
     """Generate PDF from content."""
-    if is_markdown:
-        content = convert_markdown_to_html(content)
+    if from_md:
+        content = md_to_html(content)
 
     font_config = FontConfiguration()
 
@@ -70,7 +75,7 @@ def generate_pdf(content: str, output_path: str, is_markdown: bool = False) -> N
 def main() -> None:
     """Main command-line entry-point."""
     parser = argparse.ArgumentParser(
-        description="Convert text or markdown to PDF",
+        description="Convert text or Markdown files to a PDF file.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
