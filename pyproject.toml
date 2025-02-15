@@ -34,7 +34,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.black]
 line-length = 88
-target-version = ["py32"]
+target-version = ["py312"]
 include = '\.pyi?$'
 
 [tool.isort]
@@ -49,14 +49,7 @@ disallow_untyped_defs = true
 check_untyped_defs = true
 
 [tool.ruff]
-select = [
-    "E", # pycodestyle errors
-    "W", # pycodestyle warnings
-    "F", # pyflakes
-    "I", # isort
-    "C", # flake8-comprehensions
-    "B", # flake8-bugbear
-]
+select = ["E", "W", "F", "I", "C", "B"]
 ignore = []
 line-length = 88
-target-version = "py38"
+target-version = "py312"
