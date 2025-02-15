@@ -4,8 +4,8 @@ from pathlib import Path
 from typing import Optional
 
 from markdown_it import MarkdownIt
-from weasyprint import HTML
-from weasyprint.text.fonts import FontConfiguration
+from weasyprint import HTML  # type: ignore
+from weasyprint.text.fonts import FontConfiguration  # type: ignore
 
 
 def read_input(file_path: Optional[str] = None) -> str:
@@ -67,7 +67,8 @@ def generate_pdf(content: str, output_path: str, is_markdown: bool = False) -> N
     )
 
 
-def main():
+def main() -> None:
+    """Main command-line entry-point."""
     parser = argparse.ArgumentParser(
         description="Convert text or markdown to PDF",
         formatter_class=argparse.RawDescriptionHelpFormatter,
