@@ -1,0 +1,63 @@
+[project]
+name = "text2pdf"
+requires-python = ">=3.9"
+dependencies = ["markdown-it-py (>=3.0.0,<4.0.0)", "weasyprint (>=64.0,<65.0)"]
+
+[tool.poetry]
+version = "0.1.0"
+description = "CLI tool to convert text/Markdown to PDF"
+authors = ["Michael Currin <18750745+MichaelCurrin@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{ include = "text2pdf", format = ["sdist"] }]
+license = "MIT"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "Topic :: Text Processing :: Markup",
+    "Topic :: Office/Business",
+]
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+black = "^23.9.1"
+isort = "^5.12.0"
+mypy = "^1.5.1"
+ruff = "^0.0.290"
+typing-extensions = "^4.12.2"
+
+[tool.poetry.scripts]
+text2pdf = "text2pdf.__main__:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+target-version = ["py32"]
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+check_untyped_defs = true
+
+[tool.ruff]
+select = [
+    "E", # pycodestyle errors
+    "W", # pycodestyle warnings
+    "F", # pyflakes
+    "I", # isort
+    "C", # flake8-comprehensions
+    "B", # flake8-bugbear
+]
+ignore = []
+line-length = 88
+target-version = "py38"
